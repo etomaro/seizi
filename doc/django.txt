@@ -1,0 +1,12 @@
+・ローカルサーバー起動
+$ python3 manage.py runserver 8080
+
+・ターミナルからDjango内のmodelなどを使用するDjango内のpythonファイルを実行する場合
+    1. shellに入る
+    $ python3 manage.py shell
+
+    >>>  exec(open('tools/csv_insert_db.py').read())
+
+・N+1問題
+子テーブルのオブジェクトを取得。取得したオブジェクトから親テーブルのfield値を取得しようとするとさらにSQLを発行して遅くなる
+https://zenn.dev/shimakaze_soft/articles/99452bc12af6b0

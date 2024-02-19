@@ -1,0 +1,7 @@
+Djangoのmigrationを使用することでmysql側でテーブル定義をしなくてもいい
+
+基本的なmigrationをする流れ(1か2をして3,4のmigrationをする)
+1. モデルの作成(テーブル定義)
+2. モデルの変更の保存
+3. migrationファイルの作成
+4. migrationファイルの実行(モデルをDBに反映(migration))

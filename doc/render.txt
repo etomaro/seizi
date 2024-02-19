@@ -1,0 +1,11 @@
+・Renderの無料枠は15分間アクセスなかったら落ちる。落ちた後再度アクセスすると立ち上がるのに時間がかかる
+    -> Gasで10分ごとにhttpアクセスをすることで落ちないように対策
+    cron-render-http.txtに記載
+
+    ・cron作成手順
+    GoogleDrive>cron_for_render>cron-render-http にgasファイルを作成
+
+    Runを最初押すとセキュリティ認証画面がでるのでunsafeを押して許可する
+
+    左のメニューランからトリガーを作成する。10分ごと
+    Last runに値が表示されると正しくクーロン実行できたか確認できる。

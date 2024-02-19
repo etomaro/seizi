@@ -1,0 +1,3 @@
+function myFunction() {
+  const response = UrlFetchApp.fetch("https://hacktopolitics.onrender.com")
+}
