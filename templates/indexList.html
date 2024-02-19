@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>HackToPolitics</title>
+</head>
+<body>
+<!-- ボタン -->
+<form method="get" enctype="multipart/form-data">
+  {% csrf_token %}
+    <div>
+      参議院: 
+      <input type="radio" id="cou_id" name="cou_name" value="1" checked="checked"/>
+      <label>選挙区と比例</label>
+  
+      <input type="radio" id="cou_id" name="cou_name" value="2" />
+      <label>選挙区のみ</label>
+
+      <input type="radio" id="cou_id" name="cou_name" value="3" />
+      <label>比例のみ</label>
+
+      <input type="radio" id="cou_id" name="cou_name" value="0" />
+      <label>なし</label>
+    </div>
+    <div>
+      衆議院: 
+      <input type="radio" id="rep_id" name="rep_name" value="1" checked="checked"/>
+      <label>選挙区と比例</label>
+
+      <input type="radio" id="rep_id" name="rep_name" value="2" />
+      <label>選挙区のみ</label>
+
+      <input type="radio" id="rep_id" name="rep_name" value="3" />
+      <label>比例のみ</label>
+
+      <input type="radio" id="rep_id" name="rep_name" value="0" />
+      <label>なし</label>
+    </div>
+
+    <button name="search" type="submit">検索</button>
+
+</form>
+
+<!-- テーブル -->
+<table border="1">
+  <thead>
+    <tr>
+      {% for column in sns_column %}
+        <th colspan="2">{{column}}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for sns_obj in sns_data %}
+      <tr>
+        <td colspan="2">{{sns_obj.index}}</td>
+        <td colspan="2">{{sns_obj.name_ja}}</td>
+        <td colspan="2">{{sns_obj.twitter_follower}}</td>
+        <td colspan="2">{{sns_obj.group_name}}</td>
+        {% if sns_obj.is_rep == True %}
+        <td colspan="2">衆議院</td>
+        {% else %}
+        <td colspan="2">参議院</td>
+        {% endif %}
+        {% if sns_obj.is_proportional == True %}
+            <td colspan="2">比例</td>
+            <td colspan="2">-</td>
+        {% else %}
+            <td colspan="2">選挙区</td>
+            <td colspan="2">{{sns_obj.block}}</td>
+        {% endif %}
+        <td colspan="2">{{sns_obj.twitter_follow}}</td>
+        <td colspan="2">{{sns_obj.nd}}</td>
+        <td colspan="2">{{sns_obj.twitter_name}}</td>
+        <td colspan="2">{{sns_obj.twitter_id}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</body>
+</html>
