@@ -81,19 +81,37 @@ WSGI_APPLICATION = 'wecandoit_back.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# local
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': env('DB_NAME'),
+#         'USER': env('DB_USER'),  
+#         'PASSWORD': env('DB_PASS'), 
+#         'HOST': env('DB_HOST'),
+#         'PORT': env('DB_PORT'),
+#         'OPTIONS': {
+#             'charset': 'utf8mb4',  # 絵文字も適用 
+#         },
+#     }
+# }
+
+# planet scale
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),  
-        'PASSWORD': env('DB_PASS'), 
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
-        'OPTIONS': {
-            'charset': 'utf8mb4',  # 絵文字も適用 
-        },
+  'default': {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': os.environ.get('DB_NAME'),
+    'HOST': os.environ.get('DB_HOST'),
+    'PORT': os.environ.get('DB_PORT'),
+    'USER': os.environ.get('DB_USER'),
+    'PASSWORD': os.environ.get('DB_PASSWORD'),
+    'OPTIONS': {
+        'ssl': {'ca': os.environ.get('MYSQL_ATTR_SSL_CA')},
+        'charset': 'utf8mb4',  # 絵文字も適用 
     }
+  }
 }
+  
 
 # render用にDatabase定義を修正
 # DATABASES = {'default': dburl('mysql://34.70.17.62:seizi@:3306/seizi')}

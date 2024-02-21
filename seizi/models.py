@@ -36,7 +36,7 @@ class Sns(models.Model):
     update_time = models.DateTimeField(null=True, blank=True, auto_now =True)  # 登録時と更新時に現在時間を設定
 
 class HouseOfCouncillors(models.Model):
-    # 参議院テーブル
+#     # 参議院テーブル
     people_id = models.ForeignKey(People, on_delete=models.CASCADE)
     is_proportional = models.BooleanField()  # True: 比例, False: 選挙区
     block = models.CharField(max_length=50, null=True, blank=True)
@@ -47,7 +47,7 @@ class HouseOfCouncillors(models.Model):
     update_time = models.DateTimeField(null=True, blank=True, auto_now =True)  # 登録時と更新時に現在時間を設定
 
 class Representatives(models.Model):
-    # 衆議院テーブル
+#     # 衆議院テーブル
     people_id = models.ForeignKey(People, on_delete=models.CASCADE)
     is_proportional = models.BooleanField()  # True: 比例, False: 選挙区
     block = models.CharField(max_length=50, null=True, blank=True)
